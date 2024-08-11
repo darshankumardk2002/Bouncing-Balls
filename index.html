@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bouncing Ball</title>
+    <title>Bouncing Balls with Catching Points</title>
     <link rel="stylesheet" href="style.css">
+    <style>
+        #stats {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-family: Arial, sans-serif;
+            color: black;
+        }
+    </style>
 </head>
 <body>
     <h1>Bouncing Balls with Catching Points</h1>
     <canvas id="canvas"></canvas>
+    <div id="stats">
+        <p>Total Balls Caught: <span id="totalCaught">0</span></p>
+        <p>Red Balls Caught: <span id="redCaught">0</span></p>
+        <p>Blue Balls Caught: <span id="blueCaught">0</span></p>
+        <p>Green Balls Caught: <span id="greenCaught">0</span></p>
+        <p>Yellow Balls Caught: <span id="yellowCaught">0</span></p>
+        <p>Purple Balls Caught: <span id="purpleCaught">0</span></p>
+    </div>
     <script src="main.js"></script>
 </body>
 </html>
