@@ -11,6 +11,15 @@ const catchPoints = [
     { x: 500, y: 500, radius: 20 }
 ];
 
+const stats = {
+    totalCaught: 0,
+    redCaught: 0,
+    blueCaught: 0,
+    greenCaught: 0,
+    yellowCaught: 0,
+    purpleCaught: 0
+};
+
 class Ball {
     constructor(x, y, radius, color, dx, dy) {
         this.x = x;
@@ -40,7 +49,31 @@ class Ball {
         this.x += this.dx;
         this.y += this.dy;
 
+        this.checkCaught();
         this.draw();
+    }
+
+    checkCaught() {
+        catchPoints.forEach(point => {
+            const dx = this.x - point.x;
+            const dy = this.y - point.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < this.radius + point.radius) {
+                stats.totalCaught++;
+                if (this.color === 'red') stats.redCaught++;
+                if (this.color === 'blue') stats.blueCaught++;
+                if (this.color === 'green') stats.greenCaught++;
+                if (this.color === 'yellow') stats.yellowCaught++;
+                if (this.color === 'purple') stats.purpleCaught++;
+
+                // Reset ball position
+                this.x = Math.random() * (canvas.width - this.radius * 2) + this.radius;
+                this.y = Math.random() * (canvas.height - this.radius * 2) + this.radius;
+                this.dx = (Math.random() - 0.5) * 4;
+                this.dy = (Math.random() - 0.5) * 4;
+            }
+        });
     }
 }
 
@@ -69,10 +102,20 @@ function drawCatchPoints() {
     });
 }
 
+function updateStats() {
+    document.getElementById('totalCaught').textContent = stats.totalCaught;
+    document.getElementById('redCaught').textContent = stats.redCaught;
+    document.getElementById('blueCaught').textContent = stats.blueCaught;
+    document.getElementById('greenCaught').textContent = stats.greenCaught;
+    document.getElementById('yellowCaught').textContent = stats.yellowCaught;
+    document.getElementById('purpleCaught').textContent = stats.purpleCaught;
+}
+
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawCatchPoints();
     balls.forEach(ball => ball.update());
+    updateStats();
     requestAnimationFrame(animate);
 }
 
