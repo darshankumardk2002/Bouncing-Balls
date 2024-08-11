@@ -76,5 +76,5 @@ function animate() {
     requestAnimationFrame(animate);
 }
 
-createBalls(5);
+createBalls(50);
 animate();
