@@ -91,6 +91,15 @@ function init() {
 function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     balls.forEach(ball => ball.update());
+
+    // Draw the catching point
+    ctx.beginPath();
+    ctx.arc(catchPoint.x, catchPoint.y, catchRadius, 0, Math.PI * 2, false);
+    ctx.strokeStyle = 'white';
+    ctx.lineWidth = 5;
+    ctx.stroke();
+    ctx.closePath();
+
     requestAnimationFrame(animate);
 }
 
