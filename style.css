@@ -24,10 +24,18 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
     font-family: Arial, sans-serif;
-    color: black;
 }
 
 #infoBox p {
     margin: 5px 0;
     font-weight: bold;
+    color: #333; /* Dark text color for readability */
+}
+
+h1 {
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    font-family: 'Arial', sans-serif;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Add some shadow to the title */
 }
